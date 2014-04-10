@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxifierProfile version="101" platform="MacOSX" product_id="2" product_minver="200">
+    <Options>
+        <Resolve>
+            <AutoModeDetection enabled="false"/>
+            <ViaProxy enabled="false">
+                <TryLocalDnsFirst enabled="false"/>
+            </ViaProxy>
+            <ExclusionList ExcludeSimpleHostnames="false" ExcludeLocalhost="false" ExcludeSelfHostname="false">*.local</ExclusionList>
+        </Resolve>
+        <Encryption mode="disabled"/>
+        <HttpProxiesSupport enabled="false"/>
+        <HandleDirectConnections enabled="false"/>
+        <ConnectionLoopDetection enabled="false"/>
+        <ProcessServices enabled="false"/>
+        <ProcessOtherUsers enabled="false"/>
+    </Options>
+    <ProxyList>
+        <Proxy id="101" type="HTTPS">
+            <Address>proxy.test.com</Address>
+            <Port>8080</Port>
+            <Options>2</Options>
+        </Proxy>
+        <Proxy id="102" type="HTTPS">
+            <Address>web-proxy.test.com</Address>
+            <Port>8080</Port>
+            <Options>0</Options>
+        </Proxy>
+        <Proxy id="103" type="HTTP">
+            <Address>web-proxyhk.test.com</Address>
+            <Port>8080</Port>
+            <Options>0</Options>
+        </Proxy>
+        <Proxy id="104" type="SOCKS5">
+            <Address>127.0.0.1</Address>
+            <Port>7070</Port>
+            <Options>0</Options>
+        </Proxy>
+    </ProxyList>
+    <ChainList/>
+    <RuleList>
+        <Rule enabled="false">
+            <Name>Localhost</Name>
+            <Targets>localhost; 127.0.0.1; ::1; %ComputerName%;10.*</Targets>
+            <Action type="Direct"/>
+        </Rule>
+        <Rule enabled="true">
+            <Name>HK Proxy</Name>
+            <Applications>"Alfred 2"; idea;Thunder*; iTerm; Terminal;php; Dropbox; Sparrow; "Sequel Pro"; python; ruby; wget; curl; GitHub; git-remote-https; npm; node; perl;prl*;itunes; sftp; whois;traceroute;stroke;ssh;ALiWangwang;MacUpdate*;git*;Git;fzs*;mail;flickr*;xulr*;imess*;com.apple.im*;Airmail;Adium;Prot*;Lite*;file*;ssh;ftp;Adobe*;PDApp*;Creative*;Vbox*;xulrunner;PDApp;Bit*;fire*;plugin*;Atom*;Tokens;.com.realmacsoftware*;Xcode;java</Applications>
+            <Action type="Proxy">102</Action>
+        </Rule>
+        <Rule enabled="true">
+            <Name>Default</Name>
+            <Action type="Direct"/>
+        </Rule>
+    </RuleList>
+</ProxifierProfile>
